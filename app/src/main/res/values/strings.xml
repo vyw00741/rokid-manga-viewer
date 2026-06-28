@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Manga Viewer</string>
+    <string name="title_book_select">Select Book</string>
+    <string name="no_books_found">No ZIP books found in Documents/MangaViewer</string>
+    <string name="permission_required">Read Storage permission is required to load books.</string>
+    <string name="invert_colors">Invert Colors</string>
+    <string name="read_left_to_right">Read Left to Right</string>
+</resources>

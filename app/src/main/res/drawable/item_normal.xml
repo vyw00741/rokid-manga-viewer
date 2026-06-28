@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/dark_gray" />
+    <corners android:radius="4dp" />
+    <!-- 枠線なし、少し余白を取るためにパディングを指定 -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/black" />
+</shape>

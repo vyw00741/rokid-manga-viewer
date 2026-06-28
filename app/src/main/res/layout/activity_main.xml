@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- 1. 本選択画面 -->
+    <LinearLayout
+        android:id="@+id/layoutBookSelect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvListTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_book_select"
+            android:textColor="@color/cyber_green"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <CheckBox
+            android:id="@+id/cbInvertColors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invert_colors"
+            android:textColor="@color/cyber_green"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:buttonTint="@color/cyber_green"
+            android:focusable="true" />
+
+        <CheckBox
+            android:id="@+id/cbReadLeftToRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/read_left_to_right"
+            android:textColor="@color/cyber_green"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:buttonTint="@color/cyber_green"
+            android:focusable="true" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ListView
+                android:id="@+id/lvBooks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:focusable="true"
+                android:choiceMode="singleChoice" />
+
+            <TextView
+                android:id="@+id/tvEmptyMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_books_found"
+                android:textColor="@color/gray"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:gravity="center" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 2. 漫画ビューアー画面 -->
+    <FrameLayout
+        android:id="@+id/layoutViewer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!-- 1ページ表示用ImageView -->
+        <ImageView
+            android:id="@+id/ivMangaPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:contentDescription="Manga Page"
+            android:visibility="visible" />
+
+        <!-- 見開き表示用LinearLayout -->
+        <LinearLayout
+            android:id="@+id/layoutSpread"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:baselineAligned="false">
+
+            <!-- 左ページ (次のページ、または偶数ページ) -->
+            <ImageView
+                android:id="@+id/ivMangaPageLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:contentDescription="Left Page" />
+
+            <!-- 右ページ (現在のページ、または奇数ページ) -->
+            <ImageView
+                android:id="@+id/ivMangaPageRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:contentDescription="Right Page" />
+        </LinearLayout>
+
+        <!-- ページインジケーター（右上に小さく表示） -->
+        <TextView
+            android:id="@+id/tvPageIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:textColor="@color/cyber_green"
+            android:textSize="12sp"
+            android:background="#80000000"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="1 / 1" />
+    </FrameLayout>
+
+</FrameLayout>

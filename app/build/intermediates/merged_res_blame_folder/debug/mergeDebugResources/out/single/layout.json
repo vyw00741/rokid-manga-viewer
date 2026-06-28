@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/takayuki/.gradle/daemon/8.6/com.example.rokidmangaviewer.app-mergeDebugResources-3:/layout/item_book.xml",
+        "source": "/Users/takayuki/.gradle/daemon/8.6/com.example.rokidmangaviewer.app-main-6:/layout/item_book.xml"
+    },
+    {
+        "merged": "/Users/takayuki/.gradle/daemon/8.6/com.example.rokidmangaviewer.app-mergeDebugResources-3:/layout/activity_main.xml",
+        "source": "/Users/takayuki/.gradle/daemon/8.6/com.example.rokidmangaviewer.app-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.rokidmangaviewer.app-mergeDebugResources-3:/layout/activity_main.xml",
+        "source": "com.example.rokidmangaviewer.app-main-6:/layout/activity_main.xml"
+    }
+]

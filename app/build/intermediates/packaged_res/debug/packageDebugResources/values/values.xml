@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="cyber_green">#00FF66</color>
+    <color name="dark_gray">#222222</color>
+    <color name="dark_green">#004411</color>
+    <color name="gray">#888888</color>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Manga Viewer</string>
+    <string name="invert_colors">Invert Colors</string>
+    <string name="no_books_found">No ZIP books found in Documents/MangaViewer</string>
+    <string name="permission_required">Read Storage permission is required to load books.</string>
+    <string name="read_left_to_right">Read Left to Right</string>
+    <string name="title_book_select">Select Book</string>
+    <style name="Theme.RokidMangaViewer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/cyber_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
+        <item name="colorOnPrimary">@color/black</item>
+        
+        <item name="colorSecondary">@color/cyber_green</item>
+        <item name="colorSecondaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">@color/black</item>
+        
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

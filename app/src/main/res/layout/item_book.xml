@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/item_background_selector">
+
+    <TextView
+        android:id="@+id/tvBookName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/tvBookProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cyber_green"
+        android:textSize="14sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="6dp" />
+
+</LinearLayout>
