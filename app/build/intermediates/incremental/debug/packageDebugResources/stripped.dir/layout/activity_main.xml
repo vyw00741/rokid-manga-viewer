@@ -131,6 +131,35 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="1 / 1" />
+
+        <!-- フォーカス・ルーティング用ダミービュー（R08リング対応） -->
+        <View
+            android:id="@+id/btnAnchor"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/btnLeftDummy"
+            android:nextFocusRight="@id/btnRightDummy" />
+
+        <View
+            android:id="@+id/btnLeftDummy"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusRight="@id/btnAnchor" />
+
+        <View
+            android:id="@+id/btnRightDummy"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusLeft="@id/btnAnchor" />
     </FrameLayout>
 
 </FrameLayout>

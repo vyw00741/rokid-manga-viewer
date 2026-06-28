@@ -85,7 +85,45 @@ class MainActivity : AppCompatActivity() {
         
         applyColorTheme() // 初回テーマ適用
         
+        setupFocusRouting() // R08リング用フォーカスルーティングのセットアップ
+        
         checkPermissionsAndLoad()
+    }
+
+    /**
+     * R08リング対応のためのフォーカス・ルーティングのセットアップ。
+     * OnGlobalFocusChangeListener を使用し、フォーカスが左右のダミーボタンに移動したことを検知して
+     * ページ送り・戻しを行い、即座にフォーカスを中央のアンカーボタンへ戻します。
+     */
+    private fun setupFocusRouting() {
+        binding.root.viewTreeObserver.addOnGlobalFocusChangeListener { _, newFocus ->
+            // ビューアー画面が表示されている場合のみ処理
+            if (binding.layoutViewer.visibility == View.VISIBLE) {
+                if (newFocus == binding.btnLeftDummy) {
+                    Log.d(TAG, "Focus moved to Left Dummy. Swiping left detected.")
+                    if (pageTracker.isLeftToRight()) {
+                        showNextPage()
+                    } else {
+                        showPreviousPage()
+                    }
+                    // 即座にフォーカスを中央のアンカーへ戻す
+                    binding.btnAnchor.post {
+                        binding.btnAnchor.requestFocus()
+                    }
+                } else if (newFocus == binding.btnRightDummy) {
+                    Log.d(TAG, "Focus moved to Right Dummy. Swiping right detected.")
+                    if (pageTracker.isLeftToRight()) {
+                        showPreviousPage()
+                    } else {
+                        showNextPage()
+                    }
+                    // 即座にフォーカスを中央のアンカーへ戻す
+                    binding.btnAnchor.post {
+                        binding.btnAnchor.requestFocus()
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -292,6 +330,11 @@ class MainActivity : AppCompatActivity() {
         binding.layoutViewer.visibility = View.VISIBLE
         updateViewerModeLayout()
 
+        // 基準アンカーボタンにフォーカスを合わせる
+        binding.btnAnchor.post {
+            binding.btnAnchor.requestFocus()
+        }
+
         // ページの表示 (初回はアニメーションなし: 0)
         loadPage(currentPageIndex, 0)
     }
@@ -311,6 +354,11 @@ class MainActivity : AppCompatActivity() {
         // UI切り替え
         binding.layoutViewer.visibility = View.GONE
         binding.layoutBookSelect.visibility = View.VISIBLE
+        
+        // リストにフォーカスを戻す
+        binding.lvBooks.post {
+            binding.lvBooks.requestFocus()
+        }
         
         // リストデータを再ロードして進捗表示を更新
         loadBooks()

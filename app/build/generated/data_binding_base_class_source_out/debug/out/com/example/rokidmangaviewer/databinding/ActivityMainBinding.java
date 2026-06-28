@@ -24,6 +24,15 @@ public final class ActivityMainBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final View btnAnchor;
+
+  @NonNull
+  public final View btnLeftDummy;
+
+  @NonNull
+  public final View btnRightDummy;
+
+  @NonNull
   public final CheckBox cbInvertColors;
 
   @NonNull
@@ -59,7 +68,8 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView tvPageIndicator;
 
-  private ActivityMainBinding(@NonNull FrameLayout rootView, @NonNull CheckBox cbInvertColors,
+  private ActivityMainBinding(@NonNull FrameLayout rootView, @NonNull View btnAnchor,
+      @NonNull View btnLeftDummy, @NonNull View btnRightDummy, @NonNull CheckBox cbInvertColors,
       @NonNull CheckBox cbReadLeftToRight, @NonNull ImageView ivMangaPage,
       @NonNull ImageView ivMangaPageLeft, @NonNull ImageView ivMangaPageRight,
       @NonNull LinearLayout layoutBookSelect, @NonNull LinearLayout layoutSpread,
@@ -67,6 +77,9 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull TextView tvEmptyMessage, @NonNull TextView tvListTitle,
       @NonNull TextView tvPageIndicator) {
     this.rootView = rootView;
+    this.btnAnchor = btnAnchor;
+    this.btnLeftDummy = btnLeftDummy;
+    this.btnRightDummy = btnRightDummy;
     this.cbInvertColors = cbInvertColors;
     this.cbReadLeftToRight = cbReadLeftToRight;
     this.ivMangaPage = ivMangaPage;
@@ -108,6 +121,24 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnAnchor;
+      View btnAnchor = ViewBindings.findChildViewById(rootView, id);
+      if (btnAnchor == null) {
+        break missingId;
+      }
+
+      id = R.id.btnLeftDummy;
+      View btnLeftDummy = ViewBindings.findChildViewById(rootView, id);
+      if (btnLeftDummy == null) {
+        break missingId;
+      }
+
+      id = R.id.btnRightDummy;
+      View btnRightDummy = ViewBindings.findChildViewById(rootView, id);
+      if (btnRightDummy == null) {
+        break missingId;
+      }
+
       id = R.id.cbInvertColors;
       CheckBox cbInvertColors = ViewBindings.findChildViewById(rootView, id);
       if (cbInvertColors == null) {
@@ -180,9 +211,10 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((FrameLayout) rootView, cbInvertColors, cbReadLeftToRight,
-          ivMangaPage, ivMangaPageLeft, ivMangaPageRight, layoutBookSelect, layoutSpread,
-          layoutViewer, lvBooks, tvEmptyMessage, tvListTitle, tvPageIndicator);
+      return new ActivityMainBinding((FrameLayout) rootView, btnAnchor, btnLeftDummy, btnRightDummy,
+          cbInvertColors, cbReadLeftToRight, ivMangaPage, ivMangaPageLeft, ivMangaPageRight,
+          layoutBookSelect, layoutSpread, layoutViewer, lvBooks, tvEmptyMessage, tvListTitle,
+          tvPageIndicator);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

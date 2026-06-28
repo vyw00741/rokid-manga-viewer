@@ -15,6 +15,9 @@ drawable item_focused
 drawable item_focused_inverted
 drawable item_normal
 drawable item_normal_inverted
+id btnAnchor
+id btnLeftDummy
+id btnRightDummy
 id cbInvertColors
 id cbReadLeftToRight
 id ivMangaPage
