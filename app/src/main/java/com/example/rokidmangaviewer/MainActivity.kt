@@ -15,6 +15,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -490,6 +492,8 @@ class MainActivity : AppCompatActivity() {
             if (targetKeyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
                 // 下キーの場合はcbReadLeftToRightへ移動
                 binding.cbReadLeftToRight.requestFocus()
+                binding.cbReadLeftToRight.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                binding.cbReadLeftToRight.performAccessibilityAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS, null)
                 return true
             } else if (targetKeyCode == KeyEvent.KEYCODE_DPAD_CENTER || targetKeyCode == KeyEvent.KEYCODE_ENTER) {
                 // チェックボックスをトグル
@@ -505,10 +509,17 @@ class MainActivity : AppCompatActivity() {
             if (targetKeyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
                 // 下キーの場合はリストへ移動
                 binding.lvBooks.requestFocus()
+                if (binding.lvBooks.adapter != null && binding.lvBooks.adapter.count > 0) {
+                    binding.lvBooks.setSelection(0)
+                }
+                binding.lvBooks.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                binding.lvBooks.performAccessibilityAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS, null)
                 return true
             } else if (targetKeyCode == KeyEvent.KEYCODE_DPAD_UP) {
                 // 上キーの場合はcbInvertColorsへ移動
                 binding.cbInvertColors.requestFocus()
+                binding.cbInvertColors.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                binding.cbInvertColors.performAccessibilityAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS, null)
                 return true
             } else if (targetKeyCode == KeyEvent.KEYCODE_DPAD_CENTER || targetKeyCode == KeyEvent.KEYCODE_ENTER) {
                 // チェックボックスをトグル
@@ -525,6 +536,10 @@ class MainActivity : AppCompatActivity() {
             val selectedItemPosition = binding.lvBooks.selectedItemPosition
             if (selectedItemPosition == 0 || (binding.lvBooks.firstVisiblePosition == 0 && binding.lvBooks.getChildAt(0)?.hasFocus() == true)) {
                 binding.cbReadLeftToRight.requestFocus()
+                binding.cbReadLeftToRight.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                binding.cbReadLeftToRight.performAccessibilityAction(AccessibilityNodeInfo.ACTION_ACCESSIBILITY_FOCUS, null)
+                binding.lvBooks.clearChoices()
+                binding.lvBooks.requestLayout()
                 return true
             }
         }

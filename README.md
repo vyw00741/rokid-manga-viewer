@@ -21,10 +21,10 @@ An Android comic/manga viewer application optimized for Rokid AR Glasses (such a
 ## Installation & Setup
 
 1. **Prerequisite**: Ensure your device allows installation from unknown sources.
-2. **Download APK**: Download the pre-built `MangaViewer_debug_v1.0.3.apk` from the Releases page.
+2. **Download APK**: Download the pre-built `MangaViewer_debug_v1.0.5.apk` from the Releases page.
 3. **Install via ADB**:
    ```bash
-   adb install -r MangaViewer_debug_v1.0.3.apk
+   adb install -r MangaViewer_debug_v1.0.5.apk
    ```
 4. **Permissions**: The app requires "Files and media" (Storage read) permission to locate your manga.
 5. **Manga Folder**: Place your ZIP comic books inside the `Documents/MangaViewer` folder on your device's internal storage. (The folder is automatically created on first launch).

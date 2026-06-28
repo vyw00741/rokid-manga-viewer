@@ -32,7 +32,8 @@
             android:textSize="14sp"
             android:layout_marginBottom="8dp"
             android:buttonTint="@color/cyber_green"
-            android:focusable="true" />
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
 
         <CheckBox
             android:id="@+id/cbReadLeftToRight"
@@ -43,7 +44,8 @@
             android:textSize="14sp"
             android:layout_marginBottom="8dp"
             android:buttonTint="@color/cyber_green"
-            android:focusable="true" />
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -57,6 +59,7 @@
                 android:divider="@null"
                 android:dividerHeight="0dp"
                 android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:choiceMode="singleChoice" />
 
             <TextView
