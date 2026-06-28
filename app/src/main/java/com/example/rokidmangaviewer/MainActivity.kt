@@ -500,7 +500,8 @@ class MainActivity : AppCompatActivity() {
                        keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_DPAD_DOWN ||
                        keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER ||
                        keyCode == KeyEvent.KEYCODE_PAGE_UP || keyCode == KeyEvent.KEYCODE_PAGE_DOWN ||
-                       keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
+                       keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||
+                       keyCode == KeyEvent.KEYCODE_MEDIA_NEXT || keyCode == KeyEvent.KEYCODE_MEDIA_PREVIOUS
                        
         if (event.action == KeyEvent.ACTION_UP && isNavKey) {
             return true
@@ -526,13 +527,15 @@ class MainActivity : AppCompatActivity() {
                 when (keyCode) {
                     // 次のページへ (Left-to-Rightモードなら前へ)
                     KeyEvent.KEYCODE_DPAD_RIGHT, KeyEvent.KEYCODE_DPAD_DOWN, 
-                    KeyEvent.KEYCODE_PAGE_DOWN, KeyEvent.KEYCODE_VOLUME_DOWN -> {
+                    KeyEvent.KEYCODE_PAGE_DOWN, KeyEvent.KEYCODE_VOLUME_DOWN,
+                    KeyEvent.KEYCODE_MEDIA_NEXT -> {
                         if (pageTracker.isLeftToRight()) showPreviousPage() else showNextPage()
                         return true
                     }
                     // 前のページへ (Left-to-Rightモードなら次へ)
                     KeyEvent.KEYCODE_DPAD_LEFT, KeyEvent.KEYCODE_DPAD_UP, 
-                    KeyEvent.KEYCODE_PAGE_UP, KeyEvent.KEYCODE_VOLUME_UP -> {
+                    KeyEvent.KEYCODE_PAGE_UP, KeyEvent.KEYCODE_VOLUME_UP,
+                    KeyEvent.KEYCODE_MEDIA_PREVIOUS -> {
                         if (pageTracker.isLeftToRight()) showNextPage() else showPreviousPage()
                         return true
                     }
@@ -550,12 +553,12 @@ class MainActivity : AppCompatActivity() {
             } else {
                 // 本選択画面（リスト表示）の場合
                 when (keyCode) {
-                    // 右矢印キー -> 下矢印キー（次の本）に変換してディスパッチ
-                    KeyEvent.KEYCODE_DPAD_RIGHT -> {
+                    // 右矢印キー または MEDIA_NEXT -> 下矢印キー（次の本）に変換してディスパッチ
+                    KeyEvent.KEYCODE_DPAD_RIGHT, KeyEvent.KEYCODE_MEDIA_NEXT -> {
                         return dispatchListScroll(event, KeyEvent.KEYCODE_DPAD_DOWN)
                     }
-                    // 左矢印キー -> 上矢印キー（前の本）に変換してディスパッチ
-                    KeyEvent.KEYCODE_DPAD_LEFT -> {
+                    // 左矢印キー または MEDIA_PREVIOUS -> 上矢印キー（前の本）に変換してディスパッチ
+                    KeyEvent.KEYCODE_DPAD_LEFT, KeyEvent.KEYCODE_MEDIA_PREVIOUS -> {
                         return dispatchListScroll(event, KeyEvent.KEYCODE_DPAD_UP)
                     }
                     // リスト画面でのタップ -> チェックボックスフォーカス時はトグル、それ以外は手動で本を開く
